@@ -1,24 +1,25 @@
 import React, { ReactNode, VFC, useLayoutEffect, useRef, useState } from 'react'
 import styled, { css } from 'styled-components'
 
+import { Balloon } from '../Balloon'
 import { getTooltipRect } from './tooltipHelper'
 import { Theme, useTheme } from '../../hooks/useTheme'
 import { useClassNames } from './useClassNames'
 
 type Props = {
+  message: ReactNode
   id: string
   parentRect: DOMRect
-  children: ReactNode
   isIcon?: boolean
   isMultiLine?: boolean
-  horizontal: 'left' | 'center' | 'right'
-  vertical: 'top' | 'middle' | 'bottom'
+  horizontal: 'left' | 'center' | 'right' | 'auto'
+  vertical: 'top' | 'middle' | 'bottom' | 'auto'
 }
 
 export const TooltipPortal: VFC<Props> = ({
+  message,
   id,
   parentRect,
-  children,
   isIcon = false,
   isMultiLine = false,
   horizontal,
@@ -32,8 +33,56 @@ export const TooltipPortal: VFC<Props> = ({
     $width: isMultiLine ? parentRect.width : 0,
     $height: 0,
   })
+  const [actualHorizontal, setActualHorizontal] = useState<'left' | 'center' | 'right' | null>(
+    horizontal === 'auto' ? null : horizontal,
+  )
+  const [actualVertical, setActualVertical] = useState<'top' | 'middle' | 'bottom' | null>(
+    vertical === 'auto' ? null : vertical,
+  )
+
+  const outerMargin = 10
   useLayoutEffect(() => {
     if (!portalRef.current) {
+      return
+    }
+    const { offsetWidth, offsetHeight } = portalRef.current
+
+    if (vertical === 'auto') {
+      const requiredHeight = offsetHeight + outerMargin
+      const topSpace = parentRect.top
+      const bottomSpace = window.innerHeight - parentRect.bottom
+      setActualVertical(() => {
+        if (topSpace > requiredHeight) {
+          return 'bottom'
+        } else if (bottomSpace > requiredHeight || bottomSpace > topSpace) {
+          return 'top'
+        } else {
+          return 'bottom'
+        }
+      })
+    }
+
+    if (horizontal === 'auto') {
+      const requiredWidth = offsetWidth + outerMargin
+      const leftSpace = vertical === 'middle' ? parentRect.left : parentRect.right
+      const rightSpace =
+        vertical === 'middle'
+          ? window.innerWidth - parentRect.right
+          : window.innerWidth - parentRect.left
+      setActualHorizontal(() => {
+        if (rightSpace > requiredWidth) {
+          return 'left'
+        } else if (leftSpace > requiredWidth || leftSpace > rightSpace) {
+          return 'right'
+        } else {
+          return 'left'
+        }
+      })
+    }
+  }, [horizontal, parentRect, vertical])
+
+  useLayoutEffect(() => {
+    if (!portalRef.current || !actualHorizontal || !actualVertical) {
       return
     }
     const { offsetWidth, offsetHeight } = portalRef.current
@@ -44,14 +93,14 @@ export const TooltipPortal: VFC<Props> = ({
           width: offsetWidth,
           height: offsetHeight,
         },
-        vertical,
-        horizontal,
+        vertical: actualVertical,
+        horizontal: actualHorizontal,
         isMultiLine,
         isIcon,
-        outerMargin: 10,
+        outerMargin,
       }),
     )
-  }, [horizontal, isIcon, isMultiLine, parentRect, vertical])
+  }, [actualHorizontal, actualVertical, isIcon, isMultiLine, parentRect])
 
   const classNames = useClassNames()
 
@@ -64,7 +113,13 @@ export const TooltipPortal: VFC<Props> = ({
       className={classNames.popup}
       {...rect}
     >
-      {children}
+      <StyledBalloon
+        horizontal={actualHorizontal || 'left'}
+        vertical={actualVertical || 'bottom'}
+        isMultiLine={isMultiLine}
+      >
+        <StyledBalloonText themes={theme}>{message}</StyledBalloonText>
+      </StyledBalloon>
     </Container>
   )
 }
@@ -90,6 +145,23 @@ const Container = styled.div<{
         height: ${$height}px;
       `}
         z-index: ${themes.zIndex.OVERLAP};
+    `
+  }}
+`
+const StyledBalloon = styled(Balloon)<{ isMultiLine?: boolean }>(
+  ({ isMultiLine }) =>
+    isMultiLine &&
+    css`
+      max-width: 100%;
+      white-space: normal;
+    `,
+)
+
+const StyledBalloonText = styled.p<{ themes: Theme }>`
+  margin: 0;
+  ${({ themes: { spacingByChar } }) => {
+    return css`
+      padding: ${spacingByChar(0.5)} ${spacingByChar(1)};
     `
   }}
 `

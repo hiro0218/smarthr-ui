@@ -18,13 +18,22 @@ export const animationTypes = ['bounce', 'fade', 'none'] as const
 export const roles = ['alert', 'status'] as const
 
 export type Props = {
+  /** true のときに FlashMessage を表示する */
   visible: boolean
+  /** 表示するアイコンのタイプ */
   type: typeof messageTypes[number]
+  /** メッセージの内容 */
   text: string
+  /** アニメーションのタイプ */
   animation?: typeof animationTypes[number]
+  /** コンポーネントに適用する role 属性 */
   role?: typeof roles[number]
+  /** コンポーネントに適用するクラス名 */
   className?: string
+  /** 閉じるボタンを押下、または表示してから8秒後に発火するコールバック関数 */
   onClose: () => void
+  /** FlashMessage が表示されてから一定時間後に自動で閉じるかどうか */
+  autoClose?: boolean
 }
 
 type ElementProps = Omit<HTMLAttributes<HTMLDivElement>, keyof Props>
@@ -39,12 +48,14 @@ export const FlashMessage: VFC<Props & ElementProps> = ({
   role = 'alert',
   className = '',
   onClose,
+  autoClose = true,
+  ...props
 }) => {
   const theme = useTheme()
   const classNames = useClassNames()
 
   useEffect(() => {
-    if (!visible) {
+    if (!visible || !autoClose) {
       return
     }
     const timerId = setTimeout(onClose, REMOVE_DELAY)
@@ -52,7 +63,7 @@ export const FlashMessage: VFC<Props & ElementProps> = ({
     return () => {
       clearTimeout(timerId)
     }
-  }, [onClose, visible])
+  }, [autoClose, onClose, visible])
 
   if (!visible) return null
 
@@ -80,6 +91,7 @@ export const FlashMessage: VFC<Props & ElementProps> = ({
 
   return (
     <Wrapper
+      {...props}
       className={`${type} ${classNames.wrapper}  ${className}`}
       themes={theme}
       animation={animation}

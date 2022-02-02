@@ -32,11 +32,17 @@ export type Secondary =
 type ElementProps = Omit<HTMLAttributes<HTMLDivElement>, keyof Props>
 
 type Props = {
+  /** この領域の説明 */
   description?: ReactNode
+  /** 表示する `PrimaryButton` または `PrimaryButtonAnchor` */
   primaryButton?: Primary
+  /** 表示する `SecondaryButton` または `SecondaryButtonAnchor` */
   secondaryButton?: Secondary
+  /** 表示する tertialy link のプロパティの配列 */
   tertiaryLinks?: Array<React.ComponentProps<typeof TertiaryLink>>
+  /** コンポーネントに適用する z-index 値 */
   zIndex?: number
+  /** コンポーネントに適用するクラス名 */
   className?: string
 }
 
@@ -94,6 +100,9 @@ const Base = styled(BaseComponent)<{ themes: Theme; zIndex: number }>`
       padding: ${spacingByChar(1.5)};
       text-align: center;
       z-index: ${zIndex};
+      box-shadow: 0 -4px 8px 2px rgba(0, 0, 0, 0.24);
+      border-radius: 0;
+      box-sizing: border-box;
     `
   }}
 `
