@@ -2,6 +2,53 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [19.0.1](https://github.com/kufu/smarthr-ui/compare/v19.0.0...v19.0.1) (2022-02-22)
+
+
+### Bug Fixes
+
+* `AppNavi` のアイテムのテキストが折り返されないように修正 ([#2283](https://github.com/kufu/smarthr-ui/issues/2283)) ([a58b2ac](https://github.com/kufu/smarthr-ui/commit/a58b2ac0c66d778cb631f6c4cdc79aa643218e03))
+* disabled なボタンに表示するツールチップが正常に動作するように修正 (SHRUI-529) ([#2280](https://github.com/kufu/smarthr-ui/issues/2280)) ([7bdbfb2](https://github.com/kufu/smarthr-ui/commit/7bdbfb2f58f6d47e03717ed9c5549ab42109a891))
+* fix ModelessDialog to be able to close on mobile ([#2279](https://github.com/kufu/smarthr-ui/issues/2279)) ([0f89dba](https://github.com/kufu/smarthr-ui/commit/0f89dba82328db0ff2bcc50d2f84e3a525163fa4))
+* コンボボックスのドロップダウンに表示するオプション数を段階的に増やすように変更 (SHRUI-540) ([#2263](https://github.com/kufu/smarthr-ui/issues/2263)) ([33251bf](https://github.com/kufu/smarthr-ui/commit/33251bf20bda02981a5fa1f56fc95e65594f4d09))
+
+## [19.0.0](https://github.com/kufu/smarthr-ui/compare/v18.0.0...v19.0.0) (2022-02-17)
+
+
+### ⚠ BREAKING CHANGES
+
+* smarthr-uiにおけるエラーアイコンを `FaExclamationCircleIcon` に統一する (#2240)
+
+### Features
+
+* smarthr-uiにおけるエラーアイコンを `FaExclamationCircleIcon` に統一する ([#2240](https://github.com/kufu/smarthr-ui/issues/2240)) ([8e3da84](https://github.com/kufu/smarthr-ui/commit/8e3da8465424e3bf296f1dbccce280e70a7970fd))
+
+
+### Bug Fixes
+
+* change not to use lookbehind regular expression ([#2264](https://github.com/kufu/smarthr-ui/issues/2264)) ([5c6918c](https://github.com/kufu/smarthr-ui/commit/5c6918ce8cffc4606b1df5c101b7f51f1ebedbce))
+* make `<Text>` as props like a styled-components ([#2261](https://github.com/kufu/smarthr-ui/issues/2261)) ([9105024](https://github.com/kufu/smarthr-ui/commit/91050248bc9e2b5e28cf7724b28a7e6cb9fa53f0))
+* NotificationBar の useMemo dependency 漏れを追記 ([#2239](https://github.com/kufu/smarthr-ui/issues/2239)) ([fb0c56f](https://github.com/kufu/smarthr-ui/commit/fb0c56f7238e94a0d86a3644dcc7118bf4528270))
+* style of `defaultChecked` ([#2259](https://github.com/kufu/smarthr-ui/issues/2259)) ([dd6486b](https://github.com/kufu/smarthr-ui/commit/dd6486bb7b5b2dadd4a185609c02a6f357e0d3b9))
+
+## [18.0.0](https://github.com/kufu/smarthr-ui/compare/v17.3.0...v18.0.0) (2022-02-08)
+
+
+### ⚠ BREAKING CHANGES
+
+* remove gap fallback from `<Cluster>` (#2218)
+
+### Features
+
+* add `yarn build-stylesheet` command ([#2128](https://github.com/kufu/smarthr-ui/issues/2128)) ([5cae94b](https://github.com/kufu/smarthr-ui/commit/5cae94bec37115ec712082d38ee0dac098d3a382))
+* remove gap fallback from `<Cluster>` ([#2218](https://github.com/kufu/smarthr-ui/issues/2218)) ([fd5b680](https://github.com/kufu/smarthr-ui/commit/fd5b68083281cd7a8bb65072caa17ac878d1f448))
+
+
+### Bug Fixes
+
+* Input の useMemo 記述漏れ依存配列を追記 ([#2236](https://github.com/kufu/smarthr-ui/issues/2236)) ([d8efab5](https://github.com/kufu/smarthr-ui/commit/d8efab58b9f3f19eac861b00e8c2f5bd8235fdb4))
+* マイナス値でも先頭の0が除去されるようにしたい ([#2241](https://github.com/kufu/smarthr-ui/issues/2241)) ([2a0e205](https://github.com/kufu/smarthr-ui/commit/2a0e20528de0f62511045b6b292c99b0eaa847d3))
+
 ## [17.3.0](https://github.com/kufu/smarthr-ui/compare/v17.2.0...v17.3.0) (2022-02-01)
 
 
