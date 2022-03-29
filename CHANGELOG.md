@@ -2,6 +2,60 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [20.1.0](https://github.com/kufu/smarthr-ui/compare/v20.0.0...v20.1.0) (2022-03-17)
+
+
+### Features
+
+* add Reel component ([#2345](https://github.com/kufu/smarthr-ui/issues/2345)) ([2b14f5b](https://github.com/kufu/smarthr-ui/commit/2b14f5b64dec8d313af1691ccc5483ebe30795d7))
+
+
+### Bug Fixes
+
+* `Dropdown` のモバイル表示調整 (SHRUI-536) ([#2325](https://github.com/kufu/smarthr-ui/issues/2325)) ([4f95c3f](https://github.com/kufu/smarthr-ui/commit/4f95c3feb9d19402dfa92826181a71b3982c400d))
+* add Reel wrapper to Pagination ([#2350](https://github.com/kufu/smarthr-ui/issues/2350)) ([c28baaa](https://github.com/kufu/smarthr-ui/commit/c28baaa88b584a5ad388044b7691e57928e7ad45))
+* Balloon の三角形関連のスタイルを改善 ([#2348](https://github.com/kufu/smarthr-ui/issues/2348)) ([ab1a65c](https://github.com/kufu/smarthr-ui/commit/ab1a65c0624775fab3e07883228aea45d92a800b))
+
+## [20.0.0](https://github.com/kufu/smarthr-ui/compare/v19.1.0...v20.0.0) (2022-03-08)
+
+
+### ⚠ BREAKING CHANGES
+
+* `Footer` コンポーネントを削除 (SHRUI-525) (#2320)
+* ダイアログのデフォルト幅を変更 (SHRUI-535) (#2300)
+
+### Features
+
+* ダイアログのデフォルト幅を変更 (SHRUI-535) ([#2300](https://github.com/kufu/smarthr-ui/issues/2300)) ([3dfa93d](https://github.com/kufu/smarthr-ui/commit/3dfa93d4abdb253e937b9939ee3b62e4d5ba50c2))
+
+
+### Bug Fixes
+
+* `Footer` コンポーネントを削除 (SHRUI-525) ([#2320](https://github.com/kufu/smarthr-ui/issues/2320)) ([0faca49](https://github.com/kufu/smarthr-ui/commit/0faca497050004a8f722377107f560da4a472e38))
+* change type of text props to ReactNode ([#2327](https://github.com/kufu/smarthr-ui/issues/2327)) ([0f6b58a](https://github.com/kufu/smarthr-ui/commit/0f6b58a6cf0ad5d6a220ee3ea9b75ad3f776fe3d))
+* ダイアログのフェードアニメーション中にDOMが更新されてちらつくのを防ぎたい ([#2319](https://github.com/kufu/smarthr-ui/issues/2319)) ([42945d0](https://github.com/kufu/smarthr-ui/commit/42945d0f1b446aba4d1023bfeafda5d4e7a22e70))
+
+## [19.1.0](https://github.com/kufu/smarthr-ui/compare/v19.0.2...v19.1.0) (2022-03-03)
+
+
+### Features
+
+* change to ReactNode for i18n ([#2321](https://github.com/kufu/smarthr-ui/issues/2321)) ([773e522](https://github.com/kufu/smarthr-ui/commit/773e5228c9c5d25ca80f66ea4eb1002b59cd7f24))
+
+
+### Bug Fixes
+
+* InformationPanel の内部処理を memo 化 ([#2315](https://github.com/kufu/smarthr-ui/issues/2315)) ([3255546](https://github.com/kufu/smarthr-ui/commit/3255546c2971cf6030728d9fe287d561f7e18c29))
+
+### [19.0.2](https://github.com/kufu/smarthr-ui/compare/v19.0.1...v19.0.2) (2022-02-28)
+
+
+### Bug Fixes
+
+* `BottomFixedArea` のモバイル表示調整 ([#2285](https://github.com/kufu/smarthr-ui/issues/2285)) ([ff5989c](https://github.com/kufu/smarthr-ui/commit/ff5989c4e59a638f23d952622a6a59559d5d6ac5))
+* ComboBoxItem を Storybook や SmartHR Design System での Props 表示のために、よりわかりやすい名前に変える ([#2299](https://github.com/kufu/smarthr-ui/issues/2299)) ([b715b60](https://github.com/kufu/smarthr-ui/commit/b715b600e939539ac76202adf401252b24379694))
+* workaround empty flex gap bug ([#2298](https://github.com/kufu/smarthr-ui/issues/2298)) ([0bb4ff5](https://github.com/kufu/smarthr-ui/commit/0bb4ff562859bb9776870a8f31e32999fd97a45c))
+
 ### [19.0.1](https://github.com/kufu/smarthr-ui/compare/v19.0.0...v19.0.1) (2022-02-22)
 
 
